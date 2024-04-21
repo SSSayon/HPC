@@ -1,4 +1,5 @@
 .*
 !.gitignore
-tmp/*
-CUDA_by_practice/*
+tmp/
+CUDA_by_practice/
+clangd_17.0.3/
