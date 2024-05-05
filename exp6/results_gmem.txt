@@ -1,0 +1,8 @@
+stride:    1
+bandwidth: 530.105
+stride:    2
+bandwidth: 182.482
+stride:    4
+bandwidth: 91.9984
+stride:    8
+bandwidth: 46.2854
