@@ -34,8 +34,6 @@ $$
 
 这里有两个超参数 `max_element_per_line`, `combined_size`，用脚本批处理也工程量巨大，于是**最终采用了统一的参数**。对每个数据集性能都有较小的提升。对单个数据集的测试表明，针对其矩阵元素分布选择参数，在一些数据集上能得到较大的性能提升。
 
-<div style="page-break-after: always;"></div>
-
 ## 2. 以 am 为例分析优化影响
 
 | reference | warp div. handled | cusparse | 性能线   | line truncated | line combined |
@@ -55,7 +53,6 @@ $$
 
 接下来观察矩阵局部，80000 行附近每行基本含 3 个非零元， 800000 行附近每行基本含 10-15 个非零元。选取合并参数 `max_element_per_line = 15`, `combined_size = 3`，性能再次得到了一定提升。
 
-<div style="page-break-after: always;"></div>
 
 ## 3. 运行时间与加速比
 
@@ -89,17 +86,11 @@ $$
 | ppa          | 84968.70      | 82396.90  | 1.03   |
 | reddit.dgl   | 202359.00     | 182760.00 | 1.11   |
 | products     | 258368.00     | 254979.00 | 1.01   |
-
-<div style="page-break-after: always;"></div>
-
-<p style="text-align: right;"><b>续表</b></p>
-
-
-| dataset      | cusparse (us) | opt (us)  | 加速比 |
-| ------------ | ------------- | --------- | ------ |
 | youtube      | 14416.50      | 14349.20  | 1.00   |
 | amazon_cogdl | 517236.00     | 425727.00 | 1.21   |
 | yelp         | 29972.70      | 27243.40  | 1.10   |
 | wikikg2      | 16656.40      | 21434.40  | 0.78   |
 | am           | 13394.30      | 12172.80  | 1.10   |
+
+
 在 **25**/26 个测试中超过 cusparse 的性能。
